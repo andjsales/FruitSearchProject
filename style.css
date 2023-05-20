@@ -1,0 +1,61 @@
+* {
+	box-sizing: border-box;
+}
+
+:focus {
+	/* TODO */
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: linear-gradient(to right, #ffd700, #ff8c00);
+	height: 80vh;
+	margin: 0;
+}
+
+input {
+}
+
+.search-container {
+	position: relative;
+}
+
+.search-container input {
+}
+
+.search-container .suggestions {
+	position: absolute;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.search-container input {
+	background: linear-gradient(to right, #ffd700, #ff8c00);
+}
+
+ul {
+}
+
+ul.has-suggestions {
+	/* TODO */
+}
+
+ul li li:hover {
+	background-color: #deb887;
+}
+
+ul li {
+	list-style: none;
+	cursor: pointer;
+}
+
+li li {
+	padding: 5px;
+}
+
+input {
+	width: 500px;
+	height: 40px;
+}
