@@ -1,13 +1,12 @@
-// starts by selecting the input field with the id 'fruit' and the ul element with the class 'suggestions'.
+// selecting what we'll be working with
+// input field and suggestions list
 const input = document.querySelector('#fruit');
 const suggestions = document.querySelector('.suggestions li');
 
+
 const fruit = ['Apple', 'Apricot', 'Avocado 🥑', 'Banana', 'Bilberry', 'Blackberry', 'Blackcurrant', 'Blueberry', 'Boysenberry', 'Currant', 'Cherry', 'Coconut', 'Cranberry', 'Cucumber', 'Custard apple', 'Damson', 'Date', 'Dragonfruit', 'Durian', 'Elderberry', 'Feijoa', 'Fig', 'Gooseberry', 'Grape', 'Raisin', 'Grapefruit', 'Guava', 'Honeyberry', 'Huckleberry', 'Jabuticaba', 'Jackfruit', 'Jambul', 'Juniper berry', 'Kiwifruit', 'Kumquat', 'Lemon', 'Lime', 'Loquat', 'Longan', 'Lychee', 'Mango', 'Mangosteen', 'Marionberry', 'Melon', 'Cantaloupe', 'Honeydew', 'Watermelon', 'Miracle fruit', 'Mulberry', 'Nectarine', 'Nance', 'Olive', 'Orange', 'Clementine', 'Mandarine', 'Tangerine', 'Papaya', 'Passionfruit', 'Peach', 'Pear', 'Persimmon', 'Plantain', 'Plum', 'Pineapple', 'Pomegranate', 'Pomelo', 'Quince', 'Raspberry', 'Salmonberry', 'Rambutan', 'Redcurrant', 'Salak', 'Satsuma', 'Soursop', 'Star fruit', 'Strawberry', 'Tamarillo', 'Tamarind', 'Yuzu'];
 
-// DEFINING INPUT WITH THE SEARCH FUNCTION: 
-// search function takes string as input 
-// returns array of matching strings by iterating through 'fruit' array 
-// checking if the input string matches any of the fruit names.
+// pushing matching strings to "results array" based on user input
 function search(str) {
 	let results = [];
 	for (let i = 0; i < fruit.length; i++) {
@@ -19,9 +18,8 @@ function search(str) {
 	return results;
 }
 
-// HANDLING USER SELECTION: 
-// setting the value of the clicked suggestion to the input field 
-// hides the suggestion list
+// after clicking, copies suggestion value into the user input 
+// also hides the suggestion list
 function useSuggestion(e) {
 	if (e.target.tagName === 'LI') {
 		input.value = e.target.innerText;
@@ -29,9 +27,7 @@ function useSuggestion(e) {
 	}
 }
 
-// FILTERING THE USER INPUT: 
-// searchHandler function is called. 
-// takes input value, uses it to call the search function
+// takes input value, uses it to call the search function AS user is TYPING
 // results passed to showSuggestions function
 function searchHandler(e) {
 	const inputVal = e.target.value;
@@ -39,11 +35,7 @@ function searchHandler(e) {
 	showSuggestions(results, inputVal);
 }
 
-// DISPLAYING THE SEARCH RESULTS: 
-// showSuggestions function takes the array of matching strings  
-// creates a list item element for each result
-// list items are added to unordered list element
-// if no results or the input is empty, the suggestions list is hidden
+// the function that actually displays the suggestions underneath input bar  
 function showSuggestions(results, inputVal) {
 	suggestions.innerHTML = '';
 	if (inputVal !== '') {
@@ -58,8 +50,5 @@ function showSuggestions(results, inputVal) {
 	}
 }
 
-// - EVENT LISTENERS: 
-// The searchHandler function is called when the user types in the input field. 
-// The useSuggestion function is called when the user clicks on a suggestion.
-input.addEventListener('input', searchHandler);
-suggestions.addEventListener('click', useSuggestion);
+input.addEventListener('input', searchHandler); // as a user types
+suggestions.addEventListener('click', useSuggestion); // when a user clicks on a suggestion
